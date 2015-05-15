@@ -39,7 +39,7 @@
 
 {% set basehostname = salt['pillar.get']('postfix:basehostname') -%}
 {% if basehostname %}
-myhostname: {{ grains['fqdn'] + '.' + basehostname }}
+myhostname= {{ grains['fqdn'] + '.' + basehostname }}
 {% else %}
 {{ set_parameter('myhostname', grains['fqdn']) }}
 {% endif %}
