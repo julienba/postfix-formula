@@ -19,4 +19,8 @@ run-postmap:
     - watch_in:
       - service: postfix
 
+libsasl2-modules:
+  pkg.installed:
+    - watch_in:
+      - service: postfix
 {% endif -%}
