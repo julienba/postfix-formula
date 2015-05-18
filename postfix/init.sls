@@ -37,6 +37,20 @@ run-newaliases:
       - file: /etc/aliases
 {% endif %}
 
+
+{% if basehostname' in pillar.get('postfix', '') %}
+/etc/mailname:
+  file.managed:
+    - source: salt://postfix/mailname
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - require:
+      - pkg: postfix
+{% endif %}
+
+
 # manage /etc/postfix/virtual if data found in pillar
 {% if 'virtual' in pillar.get('postfix', '') %}
 /etc/postfix/virtual:
