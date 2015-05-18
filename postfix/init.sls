@@ -38,7 +38,7 @@ run-newaliases:
 {% endif %}
 
 
-{% if basehostname' in pillar.get('postfix', '') %}
+{% if 'basehostname' in pillar.get('postfix', '') %}
 /etc/mailname:
   file.managed:
     - source: salt://postfix/mailname
